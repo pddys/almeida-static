@@ -1,0 +1,111 @@
+///* ========================================================================
+//   #COLOURS
+//   ======================================================================== */
+// The list of colour variables used globally across the project
+
+
+// Universal Colours
+// Generic colours that can be used for your project.
+// You shouldn't need to edit these, but can if the project requires it.
+
+
+//
+// White/Black
+//
+
+$white: #ffffff;
+$off-white: #F3F2ED;
+
+$black: #000000;
+$soft-black: #282525;
+$rich-black: #1D1515;
+$cool-black: #0B1226;
+
+//
+// Greys – shades of grey created from the black variable.
+//
+
+@function black($level) { // use e.g. black(10) to output a light grey color.
+    @return mix($black, $white, $level * 1%);
+}
+
+$black--10: black(10);
+$black--20: black(20);
+$black--30: black(30);
+$black--40: black(40);
+$black--50: black(50);
+$black--60: black(60);
+$black--70: black(70);
+$black--80: black(80);
+$black--90: black(90);
+
+$grey: black(50);
+
+//
+// Warnings
+//
+$warning: #F75B21;
+$error: #DE1436;
+$success: #5FB760;
+
+
+//
+// Social Colours
+//
+$twitter: #00aced;
+$facebook: #3b5998;
+$linkedin: #007bb6;
+$youtube: #bb0000;
+$tumblr: #32506d;
+$instagram: #E44552;
+$vimeo: #00ADEF;
+
+
+// Project specific colours.
+// Colours taken from brand guidelines or designs specific to this project.
+
+
+//
+// Project Colours as variables
+//
+$primary: #D95B43;
+$secondary: #EBD077;
+$tertiary: #54777B;
+$highlight: #542537;
+
+//
+// Project Colour as Array
+//
+$colors: (
+    primary: $primary,
+	secondary: $secondary,
+	tertiary: $tertiary,
+	highlight: $highlight,
+    black: $black,
+    white: $white
+);
+
+//
+// Colour Helper Function
+//
+@function color($key) { // use e.g. color(navy) to refer to color hex values
+    @return map-get($colors, $key);
+}
+
+//
+// Background Colour Array
+//
+
+// use to apply complimentary text colours to each background
+// used in 7-utlities/colour-classes
+
+$backgrounds: (
+    white: (
+        background-color: color(white),
+        color: color(black)
+    ),
+    black: (
+        background-color: color(black),
+        color: color(white)
+    )
+);

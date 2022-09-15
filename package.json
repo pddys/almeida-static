@@ -1,0 +1,23 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxtjs/style-resources": "^1.2.1",
+    "nuxt": "3.0.0-rc.9"
+  },
+  "dependencies": {
+    "@vueuse/core": "^9.2.0",
+    "aos": "^2.3.4",
+    "sass": "^1.54.9",
+    "sass-loader": "^13.0.2",
+    "vue-in-viewport-directive": "^2.0.2",
+    "vue-in-viewport-mixin": "^3.0.0",
+    "vue-observe-visibility": "^1.0.0"
+  }
+}

@@ -1,0 +1,14 @@
+///* ========================================================================
+//   #TRANSITIONS
+//   ======================================================================== */
+
+// Mixin to create transitions
+
+// Drop Shadow
+@mixin transition($prop:all, $dur:250ms, $type:ease-in-out, $del:0ms) {
+    -webkit-transition: $prop $dur $type $del;
+    -moz-transition: $prop $dur $type $del;
+    -ms-transition: $prop $dur $type $del;
+    -o-transition: $prop $dur $type $del;
+    transition: $prop $dur $type $del;
+}

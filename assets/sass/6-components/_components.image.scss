@@ -1,0 +1,108 @@
+/*  ==========================================================================
+    #IMAGE
+    ========================================================================== */
+
+// Project image sizes as variables
+$imageCropSizes: (
+    16x10: (
+        width: 1600,
+        height: 1000
+    ),
+    30x10: (
+        width: 3000,
+        height: 1000
+    )
+);
+
+
+   /**
+   * Base styles for images
+   */
+
+    .c-col-image {
+        figure {
+            margin: 0;
+        }
+    }
+
+    /**
+    * Image crop styles
+    */
+
+    .c-col-image__fig--crop {
+        overflow: hidden;
+        height: 0;
+
+        img {
+            width: 100%;
+            height: auto;
+            @include transition();
+            background-color: transparent;
+        }
+    }
+
+    // Set padding height for each iteration of our project image sizes
+    // Sets correct aspect ratio and avoids images reshaping page on load
+    @each $cropSize in $imageCropSizes {
+        $property: nth($cropSize, 2);
+        .c-col-image__fig--#{"" + nth($cropSize, 1)}-crop {
+            padding-bottom: (map-get($property, 'height') / map-get($property, 'width')) * 100%;
+        }
+
+        // Fixes an issue in MS Edge 15 – 17 where the browser ignores the padding.
+        @supports (-ms-ime-align: auto) {
+            .c-col-image__fig--#{"" + nth($cropSize, 1)}-crop {
+                &::after {
+                    padding-bottom: (map-get($property, 'height') / map-get($property, 'width')) * 100%;
+                }
+            }
+        }
+    }
+
+    // Set the height for uncropped images
+    .c-col-image__fig--50x40-nocrop {
+        height: auto;
+    }
+
+    @supports (-ms-ime-align: auto) {
+        // Fixes an issue in MS Edge 15 – 17 where the browser ignores the padding.
+
+        .c-col-image__fig--crop {
+            padding-bottom: 0;
+            height: auto;
+            position: relative;
+
+            &::after {
+                content: '';
+                display: block;
+            }
+
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+    }
+
+    /**
+    * Lazyload
+    */
+
+
+    figure.lazyload {
+        background-color: color(black);
+    }
+
+    img.lazyload {
+        opacity: 0.4;
+        filter: blur(20px);
+        -webkit-filter: blur(20px);
+        @include vendor(transform, scale(1.01));
+        @include vendor(transform-origin, center);
+    }
+
+    img.lazyloaded {
+        opacity: 1;
+        @include vendor(transform, scale(1));
+    }

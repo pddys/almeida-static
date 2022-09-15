@@ -1,0 +1,314 @@
+/*  ==========================================================================
+    #CARDS
+    ========================================================================== */
+
+
+@keyframes gradFadeIn {
+  0% {
+    mask: linear-gradient(90deg, #000 25%, #000000e6 50%, #00000000) 150% 0 / 400% no-repeat;
+    opacity: .35;
+    transform: translate3d(0,40px,0)
+  }
+  100% {
+    mask: linear-gradient(90deg, #000 25%, #000000e6 50%, #00000000) 0 / 400% no-repeat;
+    opacity: 1;
+    transform: translate3d(0,0,0)
+  }
+}
+
+@keyframes blurFadeIn {
+  0% { opacity: 0; filter: brightness(1) blur(20px) }
+  10% { opacity: 1; filter: brightness(2) blur(10px) }
+  100% { opacity: 1; filter: brightness(1) blur(0) }
+}
+
+    /**
+    * Base styles for cards
+    */
+
+    .c-col-card {
+        position: relative;
+    }
+
+    /**
+    * Link styling
+    */
+
+    .c-col-card__wrap {
+        position: relative;
+    }
+
+    .c-col-card__link {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 20;
+    }
+
+    .c-col-card--has-link {
+        .c-col-card__content .c-cta, .c-col-card__content a {
+            z-index: 30;
+        }
+    }
+
+    /**
+    * Normal card styles
+    */
+
+    .c-col-card--normal {
+        figure {
+            margin-bottom: 0;
+            position: relative;
+
+            // This is styling for a title that appears separate to the main content of the cards
+            // e.g. if the title appears overlaying the image
+            .c-col-card__title {
+                position: absolute;
+                color: white;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                margin: 0;
+                padding: $spacer-m;
+                z-index: 10;
+
+            }
+        }
+
+        &.is-visible {
+            animation-duration: 3s;
+            animation-name: gradFadeIn;
+            animation-iteration-count: 1;
+        }
+        img {
+            transition: all 1s ease !important;
+            clip-path: inset(0);
+            transform: scale(1);
+        }
+        &:hover,
+        &:focus,
+        &:active {
+            img {
+                clip-path: inset(2%);
+                transform: scale(105%) 
+            }
+        }
+
+        .c-col-card__content {
+            padding: $spacer-s 0 0;
+        }
+
+        &.c-col--has-bg-color .c-col-card__content {
+            padding: $spacer-s;
+        }
+
+        // Styling for specific column sizes
+
+        .u-1\/4\@desktop &,
+        .u-1\/3\@desktop &,
+        .u-2\/3\@desktop &,
+        .u-1\/5\@desktop &,
+        .u-1\/6\@desktop & {
+            @include mq($from: desktop) {
+                .c-col-card__title {
+                    padding: $spacer-s;
+                }
+            }
+        }
+    }
+
+    // (Optional) Set normal cards to inline when used in large containers
+    // This is to avoid the cards looking too large on screen
+
+    .c-container:not(.c-container--800):not(.c-container--600) {
+        .u-1\/1\@desktop .c-col-card--normal {
+            @include mq($from: desktop) {
+                position: relative;
+                display: flex;
+                -ms-flex-align: center;
+                -webkit-align-items: center;
+                -webkit-box-align: center;
+                align-items: center;
+                min-height: 30vw;
+
+
+
+                @include mq($from: superwide) {
+                    min-height: 450px;
+                }
+
+                .c-container--flush & {
+                    min-height: 50vw;
+
+                    @include mq($from: superwide) {
+                        min-height: 700px;
+                    }
+                }
+
+                .c-col-card__fig {
+                    width: 50%;
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin: 0;
+                }
+
+                .c-col-card__content {
+                    width: 50%;
+                    display: inline-block;
+                    vertical-align: middle;
+                    padding: $spacer-l;
+                    margin-left: 50%;
+                }
+
+                figure {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    overflow: hidden;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    left: 0;
+                    top: 0;
+                    padding-bottom: 0;
+
+                    img {
+                        flex-shrink: 0;
+                        min-width: 100%;
+                        min-height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+    }
+
+
+    /**
+    * Overlay card styles
+    */
+
+    .c-col-card--overlay {
+        position: relative;
+        overflow: hidden;
+
+        figure {
+            margin-bottom: 0;
+        }
+
+        .c-col-card__content {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            color: $white;
+            padding: 15px;
+            position: absolute;
+            bottom: 0;
+            padding: $spacer-s;
+
+        }
+
+        // Styling for specific column sizes
+        .u-1\/1\@desktop & {
+            .c-col-card__content {
+                @include mq($from: desktop) {
+                    font-size: 110%;
+                    padding: $spacer-l;
+                }
+            }
+        }
+
+        .u-1\/2\@desktop & {
+            .c-col-card__content {
+                @include mq($from: desktop) {
+                    padding: $spacer-m;
+                }
+            }
+        }
+    }
+
+    // Set the card to show through background colour for stylised images
+    .c-col-card--overlay.c-col--has-bg-color {
+        figure {
+            opacity: 0.3;
+        }
+
+        &::after {
+            display: none;
+        }
+    }
+
+    /**
+    * Inline card styles
+    */
+
+    .c-col-card--inline {
+        position: relative;
+        display: flex;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        -webkit-box-align: center;
+        align-items: center;
+        min-height: 80px;
+
+        .c-col-card__fig {
+            width: 33.33%;
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0;
+        }
+
+        .c-col-card__content {
+            width: 66.66%;
+            margin-left: 33.33%;
+            display: inline-block;
+            vertical-align: middle;
+            padding: $spacer-s $spacer-m;
+
+        }
+
+        figure {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            padding-bottom: 0;
+
+            img {
+                flex-shrink: 0;
+                min-width: 100%;
+                min-height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        // Styling for specific column sizes
+         .u-1\/1\@desktop & {
+            .c-col-card__content {
+                @include mq($from: desktop) {
+                    padding: $spacer-l;
+                }
+            }
+        }
+        .u-1\/4\@desktop &,
+        .u-1\/3\@desktop &,
+        .u-2\/3\@desktop & {
+            @include mq($from: desktop) {
+                font-size: 80%;
+            }
+        }
+
+        .u-1\/5\@desktop &,
+        .u-1\/6\@desktop & {
+            @include mq($from: desktop) {
+                font-size: 85%;
+            }
+        }
+    }

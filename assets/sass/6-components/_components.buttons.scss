@@ -1,0 +1,332 @@
+/* ==========================================================================
+   #BUTTONS
+   ========================================================================== */
+
+$inuit-button-padding-vertical:         $inuit-global-spacing-unit-small !default;
+$inuit-button-padding-horizontal:       $inuit-global-spacing-unit !default;
+$inuit-button-transition:               $global-transition !default;
+$inuit-button-radius:                   $global-radius !default;
+
+$inuit-button-small-padding-vertical:   $inuit-global-spacing-unit-tiny !default;
+$inuit-button-small-padding-horizontal: $inuit-global-spacing-unit-small !default;
+
+$inuit-button-large-padding-vertical:   $inuit-global-spacing-unit !default;
+$inuit-button-large-padding-horizontal: $inuit-global-spacing-unit-large !default;
+
+$inuit-button-ghost-border-width:       2px;
+
+/**
+ * 1. Allow us to style box model properties.
+ * 2. Line different sized buttons up a little nicer.
+ * 3. Make buttons inherit font styles (often necessary when styling `input`s as
+ *    buttons).
+ * 4. Reset/normalize some styles.
+ * 5. Force all button-styled elements to appear clickable.
+ */
+
+
+/* Global button styles (common to all variants)
+   ========================================================================== */
+
+@mixin c-btn($bg-color: $primary, $txt-color: $white) {
+    display: inline-block; /* [1] */
+    vertical-align: middle; /* [2] */
+    font: inherit; /* [3] */
+    text-align: center; /* [4] */
+    margin: 0; /* [4] */
+    cursor: pointer; /* [5] */
+    position: relative;
+
+    background-color: $bg-color;
+    color: $txt-color;
+    padding: $inuit-button-padding-vertical $inuit-button-padding-horizontal;
+    transition: $inuit-button-transition;
+    border-radius: $inuit-button-radius;
+    text-decoration: none;
+}
+
+@mixin c-btn--hover($bg-color: $primary, $txt-color: $white) {
+    background-color: darken($bg-color, 5%);
+    color: $txt-color;
+}
+
+
+/* Button classes & variants
+   ========================================================================== */
+
+
+.c-btn {
+    @include c-btn;
+
+    &:hover,
+    &:active,
+    &:focus {
+        @include c-btn--hover;
+    }
+}
+
+.c-btn--secondary {
+    @include c-btn($secondary, $white);
+
+    &:hover,
+    &:active,
+    &:focus {
+        @include c-btn--hover($secondary, $white);
+    }
+}
+
+.c-btn--tertiary {
+    @include c-btn($tertiary, $white);
+
+    &:hover,
+    &:active,
+    &:focus {
+        @include c-btn--hover($tertiary, $white);
+    }
+}
+
+/* Size variants
+   ========================================================================== */
+
+.c-btn--small {
+    padding: $inuit-button-small-padding-vertical $inuit-button-small-padding-horizontal;
+
+    &.c-btn--ghost {
+        padding: ($inuit-button-small-padding-vertical - $inuit-button-ghost-border-width) ($inuit-button-small-padding-horizontal - $inuit-button-ghost-border-width);
+    }
+}
+
+.c-btn--large {
+    padding: $inuit-button-large-padding-vertical $inuit-button-large-padding-horizontal;
+
+    &.c-btn--ghost {
+        padding: ($inuit-button-large-padding-vertical - $inuit-button-ghost-border-width) ($inuit-button-large-padding-horizontal - $inuit-button-ghost-border-width);
+    }
+}
+
+
+/* Ghost buttons
+   Ghost buttons have see-through backgrounds and are bordered.
+   ========================================================================== */
+
+@mixin c-btn--ghost($border-color: currentColor, $txt-color: currentColor) {
+    border: $inuit-button-ghost-border-width solid $border-color;
+    color: $txt-color;
+    padding: ($inuit-button-padding-vertical - $inuit-button-ghost-border-width) ($inuit-button-padding-horizontal - $inuit-button-ghost-border-width);
+    background: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: $txt-color;
+        background: rgba($black, 0.05);
+        border: $inuit-button-ghost-border-width solid $border-color;
+    }
+}
+
+.c-btn--ghost {
+    @include c-btn--ghost();
+
+    &.c-btn--secondary {
+        @include c-btn--ghost($secondary, $secondary);
+    }
+
+    &.c-btn--tertiary {
+        @include c-btn--ghost($tertiary, $tertiary);
+    }
+}
+
+
+/* Form buttons
+   ========================================================================== */
+
+input[type="submit"], input[type="button"], input[type="reset"],
+button[type="submit"], button[type="button"], button[type="reset"] {
+    @include c-btn;
+
+    &:hover,
+    &:active,
+    &:focus {
+        @include c-btn--hover;
+    }
+}
+
+
+/* Has Spinner
+    ========================================================================== */
+
+.c-btn--has-spinner {
+    display: inline;
+}
+
+.c-btn--has-spinner:after {
+    content: "";
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+    z-index: 1;
+    border-radius: $inuit-button-radius;
+}
+
+.c-btn--has-spinner:before {
+    @include fa-reg;
+    @extend .fas !optional;
+    @extend .fa-spin !optional;
+    @extend .fa-spinner-third !optional;
+    opacity: 0;
+    position: absolute;
+    left: 50%;
+    margin-left: -10px;
+    line-height: inherit;
+    z-index: 2;
+    color: $white;
+    display: inline-block;
+}
+
+.c-btn--has-spinner.active {
+    opacity: 1;
+    cursor: wait;
+
+    &:before {
+        opacity: 1;
+    }
+
+    &:after {
+        opacity: 1;
+    }
+}
+
+/* Mixin to add CTA arrow
+   ========================================================================== */
+
+@mixin c-btn--cta {
+    position: relative;
+    padding-right: $inuit-button-padding-horizontal * 2;
+
+    &::after {
+        content: '\f054';
+        @include fa-reg;
+        position: absolute;
+        @include v-center;
+        right: $inuit-button-padding-horizontal;
+    }
+}
+
+.c-btn--cta {
+    @include c-btn--cta;
+
+    &.c-btn--small {
+        padding-right: $inuit-button-small-padding-horizontal * 3;
+
+        &::after {
+            right: $inuit-button-small-padding-horizontal;
+        }
+    }
+
+    &.c-btn--large {
+        padding-right: $inuit-button-large-padding-horizontal * 2;
+
+        &::after {
+            right: $inuit-button-large-padding-horizontal;
+        }
+    }
+}
+
+/* Disabled button style
+   ========================================================================== */
+
+.c-btn--disabled {
+    @include c-btn(black(10), black(50));
+    pointer-events: none;
+}
+
+
+/*  Call to action
+    ========================================================================== */
+
+@mixin c-cta {
+    cursor: pointer;
+    font-size: 18px;
+    position: relative;
+    white-space: nowrap;
+    color: currentColor;
+    @include font-semi-bold;
+
+    &::before,
+    &::after {
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background: currentColor;
+        top: 100%;
+        left: 0;
+        pointer-events: none;
+    }
+
+    &::before {
+        content: '';
+        /* show by default */
+    }
+
+    &::before {
+        transform-origin: 100% 50%;
+        transform: scale3d(0, 1, 1);
+        transition: transform 0.3s cubic-bezier(0.2, 1, 0.8, 1);
+    }
+
+    &:hover::before {
+        transform-origin: 0% 50%;
+        transform: scale3d(1, 2, 1);
+        transition-timing-function: cubic-bezier(0.7, 0, 0.2, 1);
+    }
+
+    &::after {
+        content: '';
+        top: calc(100% + 4px);
+        transform-origin: 100% 50%;
+        transform: scale3d(0, 1, 1);
+        transition: transform 0.4s 0.1s cubic-bezier(0.2, 1, 0.8, 1);
+    }
+
+    &:hover::after {
+        transform-origin: 0% 50%;
+        transform: scale3d(1, 1, 1);
+        transition-timing-function: cubic-bezier(0.7, 0, 0.2, 1);
+    }
+}
+
+.c-cta {
+    @include c-cta;
+}
+
+
+/* Accessibility Skip link button
+   ========================================================================== */
+
+.c-btn--skip-link {
+    @include c-btn;
+    margin: 0 auto;
+    position: absolute;
+    z-index: 2000;
+    left: $spacer-s;
+    right: $spacer-s;
+    top: 1em;
+    max-width: 20em;
+    opacity: 1;
+    &:hover,
+    &:active,
+    &:focus {
+        @include c-btn--hover;
+    }
+}
+
+.c-btn--skip-link:not(:focus):not(:hover) {
+    -webkit-transform: translateY(-4em);
+    -ms-transform: translateY(-4em);
+    transform: translateY(-4em);
+    opacity: 0;
+}

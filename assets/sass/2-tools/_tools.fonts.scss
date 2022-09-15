@@ -1,0 +1,70 @@
+/* ==========================================================================
+   #Fonts
+   ========================================================================== */
+
+
+// Font Face
+@mixin fonts {
+    font-family: 'Regular', 'Helvetica Neue', helvetica, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+@mixin font-thin {
+    font-weight: 100;
+}
+@mixin font-light {
+    font-weight: 300;
+}
+@mixin font-reg {
+    font-weight: 400;
+}
+@mixin font-med {
+    font-weight: 500;
+}
+@mixin font-semi-bold {
+    font-weight: 600;
+}
+@mixin font-bold {
+    font-weight: 700;
+}
+@mixin font-heavy {
+    font-weight: 800;
+}
+@mixin font-super-heavy {
+    font-weight: 800;
+}
+@mixin font-italic {
+    font-style: italic;
+}
+
+
+
+/* Font awesome fonts
+   ========================================================================== */
+
+@mixin fa-reg {
+    font-family: 'Font Awesome 5 Pro';
+    @include font-reg;
+}
+
+@mixin fa-light {
+    font-family: 'Font Awesome 5 Pro';
+    @include font-light;
+}
+
+@mixin fa-solid {
+    font-family: 'Font Awesome 5 Pro';
+    @include font-super-heavy;
+}
+
+
+@mixin fa-brands {
+    font-family: 'Font Awesome 5 Brands';
+}
+
+@mixin fa-dutone {
+    font-family: 'Font Awesome 5 Dutone';
+}

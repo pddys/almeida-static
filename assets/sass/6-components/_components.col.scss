@@ -1,0 +1,114 @@
+/*  ==========================================================================
+    #BLOCK
+    ========================================================================== */
+
+    /**
+    * Base styles for block level elements
+    */
+
+    .c-col {
+        margin-bottom: $spacer-s;
+
+        @include mq($from: tablet) {
+            margin-bottom: $spacer-m;
+        }
+
+        @include mq($from: desktop) {
+            margin-bottom: $spacer-l;
+        }
+    }
+
+    /**
+    * Base styles for column fonts
+    */
+
+    .c-col-titles {
+        margin-bottom: $spacer-s;
+
+        @include mq($from: tablet) {
+            margin-bottom: $spacer-m;
+        }
+    }
+
+    .c-col-title {
+        @include font-bold;
+        @include font-size-3;
+        margin: 0;
+        margin-bottom: 0.133em;
+        & + .c-col-subtitle {
+            margin-top: $spacer-xs;
+        }
+
+        & + p {
+            margin-top: $spacer-xs;
+        }
+    }
+
+    .c-col-subtitle {
+        @include font-bold;
+        @include font-size-2;
+        margin-bottom: 0.133em;
+        + .c-col-title {
+            margin-top: -$spacer-xs;
+        }
+
+        & + p {
+            margin-top: $spacer-s;
+        }
+    }
+
+    .c-wysiwyg {
+
+        ul, p {
+            @include font-size-0;
+
+            // additional margins for stacking Elements
+            + ul, + p {
+                margin-top: $spacer-s;
+            }
+        }
+
+        a:not(.c-btn):not(.c-cta) {
+            text-decoration: underline;;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+
+            li {
+                @include font-size-0;
+                line-height: 1.5;
+            }
+        }
+
+        .c-btn {
+            display: block;
+
+            @include mq($from: 500px) {
+                display: inline-block;
+                margin-right: 20px;
+            }
+        }
+    }
+
+
+    /**
+    * Overrides for column fonts based on width
+    */
+
+    .u-1\/4\@desktop, .u-1\/3\@desktop, .u-2\/3\@desktop {
+        .c-col {
+            @include mq($from: desktop) {
+                font-size: 90%;
+            }
+        }
+    }
+
+    .u-1\/5\@desktop, .u-1\/6\@desktop {
+        .c-col {
+            @include mq($from: desktop) {
+                font-size: 85%;
+            }
+        }
+    }

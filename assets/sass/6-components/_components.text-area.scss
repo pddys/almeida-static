@@ -1,0 +1,20 @@
+/* ==========================================================================
+   #TEXT AREA
+   ========================================================================== */
+
+
+   /**
+    * Background colour styles for text area
+    */
+
+    .c-col-text-area {
+        &.c-col--has-bg-color, &.c-col--has-bg-image {
+            padding: $spacer-s;
+
+            .u-1\/1\@desktop & {
+                @include mq($from: desktop) {
+                    padding: $spacer-m;
+                }
+            }
+        }
+    }

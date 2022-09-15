@@ -1,0 +1,17 @@
+.c-jumpnav {
+	background: green;
+	color: black;
+	position: sticky;
+	top: 96px;
+	z-index: 999;
+}
+
+.c-jumpnav ul {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	gap: 24px;
+	list-style-type: none;
+}

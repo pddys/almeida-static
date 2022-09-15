@@ -1,0 +1,119 @@
+/* ==========================================================================
+   #TEXT SIZES
+    Base text sizes to help with consistency throughout the project
+   ========================================================================== */
+
+//SCALE BUILDING BLOCKS
+//the base
+
+@function pow($number, $exponent) {
+  $value: 1;
+
+  @if $exponent > 0 {
+    @for $i from 1 through $exponent {
+      $value: $value * $number;
+    }
+  } @else if $exponent < 0 {
+    @for $i from 1 through -$exponent {
+      $value: $value / $number;
+    }
+  }
+
+  @return $value;
+}
+
+$base: $inuit-global-font-size;
+
+//the ratio
+$ratio: 1.33;
+
+//notes in the scale
+// The 6th note in the type scale, so calculate 1rem*ratio^6
+$n-plus-6: pow($ratio,6)+rem;
+// The 5th note in the type scale, so calculate 1rem*ratio^5
+$n-plus-5: pow($ratio,5)+rem;
+// The 4th note in the type scale, so calculate 1rem*ratio^4
+$n-plus-4: pow($ratio,4)+rem;
+// The 3rd note in the type scale, so calculate 1rem*ratio^3
+$n-plus-3: pow($ratio,3)+rem;
+// The 2nd note in the type scale, so calculate 1rem*ratio^2
+$n-plus-2: pow($ratio,2)+rem;
+// The 1st note in the type scale, so calculate 1rem*ratio^1
+$n-plus-1: pow($ratio,1)+rem;
+// Scale -1, so calculate 1rem*ratio^-1, but because SASS can't handle power we'll use 1rem/ratio^1
+$n-minus-1: pow($ratio,-1)+rem;
+
+$n-minus-2: pow($ratio,-2)+rem;
+
+/* ==========================================================================
+   #TEXT SIZES
+    Base text sizes to help with consistency throughout the project
+   ========================================================================== */
+
+@mixin font-size-minus-2 {
+    font-size: $n-minus-2;
+}
+
+@mixin font-size-minus-1 {
+    font-size: $n-minus-1;
+}
+
+@mixin font-size-0 {
+    font-size: 1rem;
+}
+
+@mixin font-size-1 {
+    font-size: $n-plus-1;
+}
+
+@mixin font-size-2 {
+    font-size: $n-plus-2;
+}
+
+@mixin font-size-3 {
+    font-size: $n-plus-3;
+    line-height: 1.125;
+}
+
+@mixin font-size-4 {
+    font-size: $n-plus-4;
+    line-height: 1.125;
+}
+
+@mixin font-size-5 {
+    font-size: $n-plus-5;
+    line-height: 1.125;
+}
+
+@mixin font-size-6 {
+    font-size: $n-plus-6;
+    line-height: 1.125;
+}
+
+.o-txt-center {
+    text-align: center;
+}
+
+h6 {
+   @include font-size-1; 
+}
+
+h5 {
+   @include font-size-2; 
+}
+
+h4 {
+    @include font-size-3;
+}
+
+h3 {
+    @include font-size-4;
+}
+
+h2 {
+    @include font-size-5;
+}
+
+h1 {
+    @include font-size-6;
+}

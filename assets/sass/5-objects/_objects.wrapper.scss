@@ -1,0 +1,55 @@
+/*  ==========================================================================
+    #WRAPPER
+    ========================================================================== */
+
+$inuit-wrapper-width:   $max-site-width !default;
+$inuit-wrapper-padding: $inuit-global-spacing-unit !default;
+
+/**
+ * Page-level constraining and wrapping elements.
+ */
+
+@if (type-of($inuit-wrapper-width) != number) {
+  @error "`#{$inuit-wrapper-width}` needs to be a number.";
+}
+
+.o-wrapper {
+    @include inuit-clearfix();
+    padding-right: $inuit-global-spacing-unit-small;
+    padding-left:  $inuit-global-spacing-unit-small;
+    margin-right: auto;
+    margin-left:  auto;
+    max-width: $inuit-wrapper-width;
+
+    @include mq($from: tablet) {
+      padding-right: $inuit-global-spacing-unit;
+      padding-left:  $inuit-global-spacing-unit;
+    }
+}
+
+
+
+
+
+/* Size variants.
+   ========================================================================== */
+
+.o-wrapper--tiny {
+  padding-right: $inuit-global-spacing-unit-tiny;
+  padding-left:  $inuit-global-spacing-unit-tiny;
+}
+
+.o-wrapper--small {
+  padding-right: $inuit-global-spacing-unit-small;
+  padding-left:  $inuit-global-spacing-unit-small;
+}
+
+.o-wrapper--large {
+  padding-right: $inuit-global-spacing-unit-large;
+  padding-left:  $inuit-global-spacing-unit-large;
+}
+
+.o-wrapper--huge {
+  padding-right: $inuit-global-spacing-unit-huge;
+  padding-left:  $inuit-global-spacing-unit-huge;
+}

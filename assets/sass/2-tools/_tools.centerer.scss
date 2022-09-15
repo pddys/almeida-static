@@ -1,0 +1,24 @@
+///* ========================================================================
+//   #CENTERER
+//   ======================================================================== */
+
+// Mixin to center content
+
+@mixin center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    @include vendor(transform, translate(-50%, -50%));
+}
+
+@mixin v-center {
+    position: absolute;
+    top: 50%;
+    @include vendor(transform, translateY(-50%));
+}
+
+@mixin h-center {
+    position: absolute;
+    left: 50%;
+    @include vendor(transform, translateX(-50%));
+}
