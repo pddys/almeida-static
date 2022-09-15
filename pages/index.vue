@@ -12,6 +12,12 @@
 					<div class="o-grid__cell u-1/2@desktop">
 						<ConstruktCard/>
 					</div>
+				</div>
+			</div>
+		</div>
+		<div class="c-container u-black-bg c-container--1200">
+			<div class="o-wrapper">
+				<div class="o-grid">
 					<div class="o-grid__cell u-1/2@desktop">
 						<ConstruktCard />
 					</div>
@@ -21,6 +27,22 @@
 				</div>
 			</div>
 		</div>
+		<div class="c-container c-container--1200">
+			<div class="o-wrapper">
+				<div class="o-grid">
+					<div class="o-grid__cell u-1/3@desktop">
+						<ConstruktCard />
+					</div>
+					<div class="o-grid__cell u-1/3@desktop">
+						<ConstruktCard/>
+					</div>
+					<div class="o-grid__cell u-1/3@desktop">
+						<ConstruktCard/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<TheFooter/>
 	</main>
 </template>
 

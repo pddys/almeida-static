@@ -30,6 +30,10 @@
         position: relative;
     }
 
+    .c-col-card__text {
+        margin-bottom: 1em;
+    }
+
     /**
     * Link styling
     */
@@ -75,6 +79,10 @@
                 z-index: 10;
 
             }
+        }
+
+        .c-col-title {
+            @include font-semi-bold;
         }
 
         &.is-visible {

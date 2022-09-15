@@ -7,7 +7,8 @@
 			class="c-masthead__image"
 		>
 		<div class="c-masthead__text o-wrapper">
-			<h1>Test</h1>
+			<h1>Welcome</h1>
+			<h2>The Almeida exists to launch the next generation of British artists onto the world stage.</h2>
 		</div>
 	</div>
 </template>

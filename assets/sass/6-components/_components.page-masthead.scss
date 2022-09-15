@@ -54,17 +54,26 @@
     top: 100%;
     transform: translateY(-100%);
     z-index: 100;
+    max-width: 900px;
+    h1 {
+        margin-bottom: 0.25em;
+        text-transform: uppercase;
+        animation-duration: 1.5s;
+        animation-name: fadeInUp;
+    }
+    h2 {
+        @include font-size-3;
+        @include font-semi-bold;
+        animation-duration: 1.5s;
+        animation-delay: 250ms;
+        animation-name: fadeInUp;
+    }
 }
 
-@keyframes gradFadeIn {
-  0% {
-    mask: linear-gradient(90deg, #000 25%, #000000e6 50%, #00000000) 150% 0 / 400% no-repeat;
-    opacity: .35;
-  }
-  100% {
-    mask: linear-gradient(90deg, #000 25%, #000000e6 50%, #00000000) 0 / 400% no-repeat;
-    opacity: 1;
-  }
+@keyframes blurFadeIn {
+  0% { opacity: 0; filter: brightness(1) blur(20px) }
+  10% { opacity: 1; filter: brightness(2) blur(10px) }
+  100% { opacity: 1; filter: brightness(1) blur(0) }
 }
 
 @keyframes scaleFadeIn {

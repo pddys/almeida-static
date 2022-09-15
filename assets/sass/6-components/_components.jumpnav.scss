@@ -1,5 +1,5 @@
 .c-jumpnav {
-	background: green;
+	background: $almeida-green;
 	color: black;
 	position: sticky;
 	top: 96px;
@@ -14,4 +14,9 @@
 	justify-content: flex-start;
 	gap: 24px;
 	list-style-type: none;
+	padding: 8px;
+	@include font-semi-bold;
+	li {
+		margin-bottom: 0;
+	}
 }
