@@ -254,7 +254,7 @@ button[type="submit"], button[type="button"], button[type="reset"] {
     position: relative;
     white-space: nowrap;
     color: currentColor;
-    @include font-semi-bold;
+    @include font-bold;
 
     &::before,
     &::after {
@@ -278,12 +278,6 @@ button[type="submit"], button[type="button"], button[type="reset"] {
         transition: transform 0.3s cubic-bezier(0.2, 1, 0.8, 1);
     }
 
-    &:hover::before {
-        transform-origin: 0% 50%;
-        transform: scale3d(1, 2, 1);
-        transition-timing-function: cubic-bezier(0.7, 0, 0.2, 1);
-    }
-
     &::after {
         content: '';
         top: calc(100% + 4px);
@@ -291,6 +285,13 @@ button[type="submit"], button[type="button"], button[type="reset"] {
         transform: scale3d(0, 1, 1);
         transition: transform 0.4s 0.1s cubic-bezier(0.2, 1, 0.8, 1);
     }
+
+    &:hover::before {
+        transform-origin: 0% 50%;
+        transform: scale3d(1, 2, 1);
+        transition-timing-function: cubic-bezier(0.7, 0, 0.2, 1);
+    }
+
 
     &:hover::after {
         transform-origin: 0% 50%;

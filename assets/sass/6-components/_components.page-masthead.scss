@@ -60,10 +60,11 @@
         text-transform: uppercase;
         animation-duration: 1.5s;
         animation-name: fadeInUp;
+        @include font-black;
     }
     h2 {
         @include font-size-3;
-        @include font-semi-bold;
+        @include font-bold;
         animation-duration: 1.5s;
         animation-delay: 250ms;
         animation-name: fadeInUp;

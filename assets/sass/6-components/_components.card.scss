@@ -82,7 +82,7 @@
         }
 
         .c-col-title {
-            @include font-semi-bold;
+            @include font-bold;
         }
 
 
@@ -102,7 +102,8 @@
         &:active {
             img {
                 clip-path: inset(2%);
-                transform: scale(105%) 
+                transform: scale(105%);
+                filter: saturate(105%) brightness(105%);
             }
             .c-cta {
                 &::before {

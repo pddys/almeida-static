@@ -82,7 +82,7 @@ header {
 		margin-bottom: 0;
 		@include font-size-0;
 		font-size: 110%;
-		@include font-semi-bold;
+		@include font-bold;
 	}
 }
 .c-header__nav--right {

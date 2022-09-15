@@ -114,5 +114,21 @@ $backgrounds: (
     black: (
         background-color: color(black),
         color: color(white)
-    )
+    ),
+    red: (
+        background-color: $almeida-red,
+        color: $white
+    ),
+    blue: (
+        background-color: $almeida-blue,
+        color: $black
+    ),
+    yellow: (
+        background-color: $almeida-yellow,
+        color: $black
+    ),
+    green: (
+        background-color: $almeida-green,
+        color: $black
+    ),
 );
