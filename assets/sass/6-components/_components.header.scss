@@ -11,13 +11,56 @@ header {
 	z-index: 1000;
 	height: 96px;
 }
-.c-header__container {
+.c-header__full-container {
 	display: flex;
 	flex-direction: row;
 	width: 100%;
+	height: 100%;
 	justify-content: space-between;
 	align-items: center;
 }
+.c-header__container--left, .c-header__container--right {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	justify-content: space-between;
+}
+
+.c-header__container--left {
+	align-items: flex-start;
+	li {
+		// animation-delay: 1.5s;
+		animation-duration: 3s;
+		animation-name: fadeInRight;
+	}
+	.c-header__border-top, .c-header__border-bottom {
+		animation-duration: 1.5s;
+		animation-name: scaleWidth;
+		transform-origin: top right;
+		// animation-timing-function: cubic-bezier(0.1, 0.7, 1, 0.1);
+		// animation-timing-function: ease-out;
+
+	}
+}
+
+.c-header__container--right {
+	align-items: flex-end;
+	li {
+		// animation-delay: 1.5s;
+		animation-duration: 3s;
+		animation-name: fadeInLeft;
+	}
+	.c-header__border-top, .c-header__border-bottom {
+		animation-duration: 1.5s;
+		animation-name: scaleWidth;
+		transform-origin: top left;
+		// animation-timing-function: cubic-bezier(0.1, 0.7, 1, 0.1);
+		// animation-timing-function: ease-out;
+
+	}
+}
+
 .c-header__border-top {
 	height: 6px;
 	width: 100%;
@@ -46,7 +89,18 @@ header {
 	justify-content: flex-end;
 }
 .c-header__logo {
-	max-width: 150px;
-	height: auto;
+	// max-width: 150px;
+	height: 100%;
 	margin: 6px 0;
+	flex-shrink: 1;
+}
+
+
+@keyframes scaleWidth {
+    0% { 
+	    transform: scaleX(0);
+    }
+    100% {
+	    transform: scaleX(1);
+    }
 }
