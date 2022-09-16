@@ -1,6 +1,6 @@
 <template>
 	<header class="c-header" ref="target">
-		<div class="c-header__full-container">
+		<div class="c-header__full-container o-wrapper">
 			<div class="c-header__container c-header__container--left">
 				<div class="c-header__border-top"></div>
 				<ul class="c-header__nav c-header__nav--left">
